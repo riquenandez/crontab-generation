@@ -24,7 +24,7 @@
 <script>
 import Command from "./Command";
 export default {
-  name: "ContrabGui",
+  name: "CrontabGui",
   components: {
     Command
   },

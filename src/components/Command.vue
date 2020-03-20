@@ -1,5 +1,5 @@
 <template>
-  <div class="contrab">
+  <div class="crontab">
     <p>{{minute}}</p>
     <p>{{hour}}</p>
     <p>{{dayOfMonth}}</p>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.contrab {
+.crontab {
   display: flex;
   width: 100%;
 }

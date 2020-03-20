@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <h1>Contrab Command Generator</h1>
+    <h1>Crontab Command Generator</h1>
 
-    <ContrabGui />
+    <CrontabGui />
   </div>
 </template>
 
 <script>
-import ContrabGui from "./components/ContrabGui";
+import CrontabGui from "./components/CrontabGui";
 export default {
   name: "App",
   components: {
-    ContrabGui
+    CrontabGui
   }
 };
 </script>
