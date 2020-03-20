@@ -1,5 +1,5 @@
 <template>
-  <div class="crontab">
+  <div class="liveCommand">
     <p>{{minute}}</p>
     <p>{{hour}}</p>
     <p>{{dayOfMonth}}</p>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "Command",
+  name: "LiveCommand",
   props: [
     "minute",
     "hour",
@@ -24,13 +24,11 @@ export default {
 </script>
 
 <style scoped>
-.crontab {
+.liveCommand {
   display: flex;
-  width: 100%;
+  text-align: center;
 }
 p {
-  display: flex;
-  width: auto;
   padding: 5px;
 }
 </style>

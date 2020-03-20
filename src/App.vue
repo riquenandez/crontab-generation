@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-    <h1>Crontab Command Generator</h1>
-
-    <CrontabGui />
+    <CrontabGenerator />
   </div>
 </template>
 
 <script>
-import CrontabGui from "./components/CrontabGui";
+import CrontabGenerator from "./components/CrontabGenerator";
 export default {
   name: "App",
   components: {
-    CrontabGui
+    CrontabGenerator
   }
 };
 </script>
