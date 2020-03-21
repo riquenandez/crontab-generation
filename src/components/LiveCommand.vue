@@ -1,8 +1,20 @@
 <template>
-  <div class="liveCommand">
-    <h3>Preview:</h3>
-    <section class="preview">
-      <p>{{parameters[0].value}}</p>
+  <div class="preview">
+    <h3>Preview</h3>
+    <section>
+      <p>
+        Minutes: {{parameters[0].value}}
+        <br />
+        Hour: {{parameters[1].value}}
+        <br />
+        Day Of Month: {{parameters[2].value}}
+        <br />
+        Month: {{parameters[3].value}}
+        <br />
+        Day Of Week: {{parameters[4].value}}
+        <br />
+        Linux Command: {{parameters[5].value}}
+      </p>
     </section>
   </div>
 </template>
@@ -15,21 +27,14 @@ export default {
 </script>
 
 <style scoped>
-.liveCommand {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-direction: column;
+.preview {
+  padding: 10px;
 }
 
-.preview {
-  height: 30px;
-}
 h3 {
   margin: 0;
 }
 p {
-  padding: 5px;
   margin: 0;
 }
 </style>

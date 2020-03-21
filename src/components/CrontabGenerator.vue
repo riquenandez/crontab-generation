@@ -3,32 +3,37 @@
     <h1>Crontab Command Generator</h1>
 
     <section class="buttons">
-      <button v-on:click="test()">Generate Command</button>
-      <button v-on:click="clear()">Clear</button>
-      <input type="radio" value="Yes" />
+      <button v-on:click="mondayToFriday()">Monday-Friday</button>
+      <button v-on:click="everyTenMin()">Every 10 minutes</button>
+      <button v-on:click="everyHour()">Every Hour</button>
+      <button v-on:click="daily()">Run daily</button>
+      <button v-on:click="businessHours()">Business Hours</button>
+      <button v-on:click="quarterly()">Every Quarter</button>
     </section>
 
-    <section class="test">
-      <Description v-bind:parameters="parameters" />
-      <Inputs v-bind:parameters="parameters" />
+    <section class="buttons">
+      <button v-on:click="generateCommand()">Generate Command</button>
+      <button v-on:click="clearCommand()">Clear</button>
     </section>
-    <LiveCommand v-bind:parameters="parameters" />
-    <h3>{{command}}</h3>
+
+    <section class="inputInterface">
+      <Inputs v-bind:parameters="parameters" />
+      <LiveCommand v-bind:parameters="parameters" />
+    </section>
+
+    <h3>Your Command: {{command}}</h3>
   </div>
 </template>
 
 
 <script>
 import LiveCommand from "./LiveCommand";
-import Description from "./Description";
 import Inputs from "./Inputs";
 
 export default {
   name: "CrontabGenerator",
   components: {
     LiveCommand,
-
-    Description,
     Inputs
   },
   data() {
@@ -38,27 +43,84 @@ export default {
         { id: 2, name: "Hour", value: null, range: "(0-23)" },
         { id: 3, name: "Day of Month", value: null, range: "(1-31)" },
         { id: 4, name: "Month", value: null, range: "(1-12)" },
-        { id: 5, name: "Day Of Week", value: null, range: "(0-7)" },
+        { id: 5, name: "Day of Week", value: null, range: "(0-7)" },
         { id: 6, name: "Linux Command", value: null, range: "Linux Command" }
       ],
-      command: "Your Command: "
+      command: ""
     };
   },
   methods: {
-    test: function() {
+    generateCommand: function() {
       let inputs = this.parameters;
+      //clears commmand before generating new command
+      this.command = "";
+
+      //command generating loop
       inputs.forEach(element => {
+        //check to see if element values are empty
         if (element.value == null) {
-          element.value = "*";
-          this.command += element.value;
+          //filter out Linux Command field
+          if (element.name !== "Linux Command") {
+            //set element value to '*' if empty
+            element.value = "*";
+            this.command += element.value + " ";
+          } else {
+            //set Linux Command to example str if empty
+            element.value = "command_to_execute";
+            this.command += element.value + " ";
+          }
+        } else {
+          //add element values to command
+          this.command += element.value + " ";
         }
       });
     },
-    clear: function() {
+    clearCommand: function() {
+      //clear input and command values
       this.parameters.forEach(element => {
         element.value = null;
       });
       this.command = "";
+    },
+    everyTenMin: function() {
+      //generates every 10 minutes values
+      let minutes = this.parameters[0];
+      minutes.value = "*/10";
+    },
+    daily: function() {
+      //sets Day of month, month, and day of week fields to '*'
+      this.parameters.forEach(element => {
+        if (element.id == "3" || element.id == "4" || element.id == "5") {
+          element.value = "*";
+        }
+      });
+    },
+    mondayToFriday: function() {
+      //sets day of week to monday-friday value
+      let weekDay = this.parameters[4];
+      weekDay.value = "1-5";
+    },
+    businessHours: function() {
+      //set hour value to 9:00am-5:00pm
+      let hour = this.parameters[1];
+      hour.value = "9-17";
+    },
+    quarterly: function() {
+      //quarterly crontab, first day of every 3rd month
+      this.parameters.forEach(element => {
+        if (element.id == "5") {
+          element.value = "*";
+        } else if (element.id == "4") {
+          element.value = "*/3";
+        } else if (element.id == "3") {
+          element.value = "1";
+        } else if (element.id == "1" || element.id == "2") {
+          element.value = "0";
+        }
+      });
+    },
+    everyHour: function() {
+      this.parameters[0].value = "0";
     }
   }
 };
@@ -71,23 +133,31 @@ export default {
   width: auto;
   height: auto;
   background-color: antiquewhite;
+  border-radius: 25px;
+}
+h1 {
+  text-align: center;
+  padding-top: 10px;
 }
 button {
   margin-right: 10px;
 }
 
 h3 {
+  padding-bottom: 10px;
+  padding-left: 10px;
   margin: 0;
 }
 
 .buttons {
   display: flex;
   padding: 10px;
+  justify-content: center;
 }
 
-.test {
+.inputInterface {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  padding: 10px;
 }
 </style>

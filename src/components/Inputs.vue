@@ -1,5 +1,6 @@
 <template>
   <section>
+    <h3>Inputs</h3>
     <div v-for="parameter in parameters" :key="parameter.id">
       <input type="text" v-model="parameter.value" :placeholder="parameter.range" />
     </div>
@@ -13,5 +14,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+h3 {
+  margin: 0;
+}
 </style>
