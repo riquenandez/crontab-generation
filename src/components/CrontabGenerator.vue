@@ -28,11 +28,11 @@ If you wish you to add a new crontab generation function, you can include it und
       <button v-on:click="generateCommand()">Generate Command</button>
       <button v-on:click="clearCommand()">Clear</button>
     </section>
+    <p>Note: Empty fields will default to '*'</p>
     <section class="inputInterface">
       <Inputs v-bind:parameters="parameters" />
       <LiveCommand v-bind:parameters="parameters" />
     </section>
-    <p>Note: Empty fields will default to '*'</p>
     <h3>Your Command: {{command}}</h3>
   </div>
 </template>
@@ -159,9 +159,16 @@ button {
 
 h3,
 p {
-  padding-bottom: 20px;
   padding-left: 20px;
   margin: 0;
+}
+
+p {
+  padding-top: 10px;
+}
+
+h3 {
+  padding-bottom: 20px;
 }
 
 .buttons {
