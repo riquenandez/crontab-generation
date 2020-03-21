@@ -1,3 +1,18 @@
+/*
+Crontab Generator Vue component.
+
+Consists of 3 major sections:
+  First section hosts the method activation buttons.
+  Second section hosts the generation and clear command buttons.
+  Third sections consists of Inputs and LiveCommand components.
+
+This component hosts the input parameters and command data objects, 
+  as well as the crontab generation methods
+
+If you wish you to add a new crontab generation function, you can include it under methods.
+
+*/
+
 <template>
   <div class="crontabGenerator">
     <h1>Crontab Command Generator</h1>
@@ -17,13 +32,14 @@
       <Inputs v-bind:parameters="parameters" />
       <LiveCommand v-bind:parameters="parameters" />
     </section>
-    <p>Note: Empty fields will default to *</p>
+    <p>Note: Empty fields will default to '*'</p>
     <h3>Your Command: {{command}}</h3>
   </div>
 </template>
 
 
 <script>
+//import components
 import LiveCommand from "./LiveCommand";
 import Inputs from "./Inputs";
 
@@ -53,7 +69,7 @@ export default {
   },
   methods: {
     generateCommand: function() {
-      let inputs = this.parameters;
+      const inputs = this.parameters;
       //clears commmand before generating new command
       this.command = "";
 
@@ -104,7 +120,7 @@ export default {
     },
     businessHours: function() {
       //set hour value to 9:00am-5:00pm
-      let hour = this.parameters[1];
+      const hour = this.parameters[1];
       hour.value = "9-17";
     },
     quarterly: function() {
@@ -130,8 +146,6 @@ export default {
 
 <style scoped>
 .crontabGenerator {
-  width: auto;
-  height: auto;
   background-color: white;
   border-radius: 25px;
 }

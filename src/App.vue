@@ -1,3 +1,10 @@
+/*
+App Vue component
+
+This component renders the CrontabGenerator component.
+
+*/
+
 <template>
   <div id="app">
     <CrontabGenerator />
@@ -5,16 +12,12 @@
 </template>
 
 <script>
+//import ContrabGenerator component
 import CrontabGenerator from "./components/CrontabGenerator";
 export default {
   name: "App",
   components: {
     CrontabGenerator
-  },
-  data() {
-    return {
-      test: "test data"
-    };
   }
 };
 </script>

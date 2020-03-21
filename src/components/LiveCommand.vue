@@ -1,3 +1,11 @@
+/*
+LiveCommand Vue component.
+
+This component displays a live preview of the user input.
+It receives the input data from its parent component.
+
+*/
+
 <template>
   <div class="preview">
     <h3>Preview</h3>
