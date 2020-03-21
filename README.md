@@ -1,24 +1,29 @@
 # crontab-generation
 
+A crontab command generation interface with common crontab configurations
+
+## Requirements
+
+To run this project, make sure you have Node.js installed.
+
+Also, make sure you clone the repository or download the project files to your machine before continuing.
+
 ## Project setup
+
+Navigate to project directory 'crontab-generation' and run the following codes.
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run project on localhost
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Now you can check out the project in your browser at
 
-### Lints and fixes files
 ```
-npm run lint
+http://localhost:8080/
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
