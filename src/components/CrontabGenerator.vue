@@ -3,11 +3,11 @@
     <h1>Crontab Command Generator</h1>
 
     <section class="buttons">
-      <button v-on:click="mondayToFriday()">Monday-Friday</button>
       <button v-on:click="everyTenMin()">Every 10 minutes</button>
       <button v-on:click="everyHour()">Every Hour</button>
-      <button v-on:click="daily()">Run daily</button>
       <button v-on:click="businessHours()">Business Hours</button>
+      <button v-on:click="daily()">Run daily</button>
+      <button v-on:click="mondayToFriday()">Monday-Friday</button>
       <button v-on:click="quarterly()">Every Quarter</button>
     </section>
 
@@ -44,7 +44,12 @@ export default {
         { id: 3, name: "Day of Month", value: null, range: "(1-31)" },
         { id: 4, name: "Month", value: null, range: "(1-12)" },
         { id: 5, name: "Day of Week", value: null, range: "(0-7)" },
-        { id: 6, name: "Linux Command", value: null, range: "Linux Command" }
+        {
+          id: 6,
+          name: "Command To Execute",
+          value: null,
+          range: "Linux Command"
+        }
       ],
       command: ""
     };
@@ -60,7 +65,7 @@ export default {
         //check to see if element values are empty
         if (element.value == null) {
           //filter out Linux Command field
-          if (element.name !== "Linux Command") {
+          if (element.name !== "Command To Execute") {
             //set element value to '*' if empty
             element.value = "*";
             this.command += element.value + " ";
@@ -132,7 +137,7 @@ export default {
   align-items: center;
   width: auto;
   height: auto;
-  background-color: antiquewhite;
+  background-color: white;
   border-radius: 25px;
 }
 h1 {
@@ -144,8 +149,8 @@ button {
 }
 
 h3 {
-  padding-bottom: 10px;
-  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
   margin: 0;
 }
 

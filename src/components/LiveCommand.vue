@@ -13,7 +13,7 @@
         <br />
         Day Of Week: {{parameters[4].value}}
         <br />
-        Linux Command: {{parameters[5].value}}
+        Command To Execute: {{parameters[5].value}}
       </p>
     </section>
   </div>
