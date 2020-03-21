@@ -1,7 +1,6 @@
 <template>
   <div class="crontabGenerator">
     <h1>Crontab Command Generator</h1>
-
     <section class="buttons">
       <button v-on:click="everyTenMin()">Every 10 minutes</button>
       <button v-on:click="everyHour()">Every Hour</button>
@@ -10,17 +9,15 @@
       <button v-on:click="mondayToFriday()">Monday-Friday</button>
       <button v-on:click="quarterly()">Every Quarter</button>
     </section>
-
     <section class="buttons">
       <button v-on:click="generateCommand()">Generate Command</button>
       <button v-on:click="clearCommand()">Clear</button>
     </section>
-
     <section class="inputInterface">
       <Inputs v-bind:parameters="parameters" />
       <LiveCommand v-bind:parameters="parameters" />
     </section>
-
+    <p>Note: Empty fields will default to *</p>
     <h3>Your Command: {{command}}</h3>
   </div>
 </template>
@@ -133,8 +130,6 @@ export default {
 
 <style scoped>
 .crontabGenerator {
-  align-content: center;
-  align-items: center;
   width: auto;
   height: auto;
   background-color: white;
@@ -148,7 +143,8 @@ button {
   margin-right: 10px;
 }
 
-h3 {
+h3,
+p {
   padding-bottom: 20px;
   padding-left: 20px;
   margin: 0;
