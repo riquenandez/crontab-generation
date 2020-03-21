@@ -1,16 +1,18 @@
 <template>
-  <div>
-    <p>{{name}}</p>
-    <p>{{range}}</p>
+  <div class="itemContainer">
+    <input class="input" type="text" v-model="parameter.value" :placeholder="parameter.range" />
   </div>
 </template>
 
 <script>
 export default {
   name: "InputItem",
-  props: ["name", "range", "parameter"]
+  props: ["parameter"]
 };
 </script>
 
-<style>
+<style scoped>
+.itemContainer {
+  width: auto;
+}
 </style>

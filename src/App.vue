@@ -10,6 +10,11 @@ export default {
   name: "App",
   components: {
     CrontabGenerator
+  },
+  data() {
+    return {
+      test: "test data"
+    };
   }
 };
 </script>
