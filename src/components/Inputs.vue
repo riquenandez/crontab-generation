@@ -1,15 +1,14 @@
-/*
-Inputs Vue component. 
-
-This component renders input elements based on the 
-number of input parameters passed down by parent component
-
-*/
+/* Inputs Vue component. This component renders input elements based on the
+number of input parameters passed down by parent component */
 <template>
   <section class="inputs">
     <h3>Inputs</h3>
     <div v-for="parameter in parameters" :key="parameter.id">
-      <input type="text" v-model="parameter.value" :placeholder="parameter.range" />
+      <input
+        type="text"
+        v-model="parameter.value"
+        :placeholder="parameter.range"
+      />
     </div>
   </section>
 </template>

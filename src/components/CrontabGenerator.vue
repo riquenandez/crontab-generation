@@ -1,17 +1,10 @@
-/*
-Crontab Generator Vue component.
-
-Consists of 3 major sections:
-  First section hosts the method activation buttons.
-  Second section hosts the generation and clear command buttons.
-  Third sections consists of Inputs and LiveCommand components.
-
-This component hosts the input parameters and command data objects, 
-  as well as the crontab generation methods
-
-If you wish you to add a new crontab generation function, you can include it under methods.
-
-*/
+/* Crontab Generator Vue component. This component hosts the input parameters
+and command data objects, as well as the crontab generation methods. It consists
+of 3 major sections: First section hosts the method activation buttons. Second
+section hosts the generation and clear command buttons. Third sections consists
+of Inputs and LiveCommand components. Additionally, it includes a copy to
+clipboard button. If you wish you to add a new crontab generation function, you
+can include it under methods. */
 
 <template>
   <div class="crontabGenerator">
@@ -33,10 +26,14 @@ If you wish you to add a new crontab generation function, you can include it und
       <Inputs v-bind:parameters="parameters" />
       <LiveCommand v-bind:parameters="parameters" />
     </section>
-    <h3>Your Command: {{command}}</h3>
+    <h3>Your Command: {{ command }}</h3>
+    <section class="buttons">
+      <button type="button" v-on:click="doCopy()">
+        Copy Command
+      </button>
+    </section>
   </div>
 </template>
-
 
 <script>
 //import components
@@ -139,6 +136,18 @@ export default {
     },
     everyHour: function() {
       this.parameters[0].value = "0";
+    },
+    doCopy: function() {
+      this.$copyText(this.command).then(
+        function(e) {
+          alert("Copied");
+          console.log(e);
+        },
+        function(e) {
+          alert("Can not copy");
+          console.log(e);
+        }
+      );
     }
   }
 };
